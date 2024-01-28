@@ -1,5 +1,6 @@
 #(©)Codexbotz
 
+import schedule
 from aiohttp import web
 from plugins import web_server
 
@@ -70,6 +71,18 @@ class Bot(Client):
         await app.setup()
         bind_address = "0.0.0.0"
         await web.TCPSite(app, bind_address, PORT).start()
+
+
+        def run_sxh():
+            while 1:
+                n = schedule.idle_seconds()
+                if n is None:
+                    n = 1
+                if n > 0:
+                    time.sleep(n)
+                schedule.run_pending()
+        rxn = threading.Thread(target=run_sxh)
+        rxn.start()
 
     async def stop(self, *args):
         await super().stop()
