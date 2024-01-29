@@ -88,7 +88,7 @@ async def start_command(client: Client, message: Message):
                     schedule.every(int(TIME_TO_DEL)).seconds.do(lambda: asyncio.run(del_msg(client, to_del.chat.id, to_del.id)))
             except Exception as uff:
                 print(str(uff))
-                await message.reply_text(str(uff))
+                pass
         return
     else:
         reply_markup = InlineKeyboardMarkup(
