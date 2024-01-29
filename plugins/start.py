@@ -86,8 +86,9 @@ async def start_command(client: Client, message: Message):
                 to_del = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                 if TIME_TO_DEL:
                     schedule.every(int(TIME_TO_DEL)).seconds.do(lambda: asyncio.run(del_msg(client, to_del.chat.id, to_del.id)))
-            except:
-                pass
+            except Exception as uff:
+                print(str(uff))
+                await message.reply_text(str(uff))
         return
     else:
         reply_markup = InlineKeyboardMarkup(
@@ -208,3 +209,4 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
         msg = await message.reply(REPLY_ERROR)
         await asyncio.sleep(8)
         await msg.delete()
+        
