@@ -22,9 +22,9 @@ async def is_subscribed(filter, client, update):
     if not FORCE_SUB_CHANNEL:
         return True
     if not FORCE_SUB_CHANNEL_2:
-        return True
+        pass
     if not FORCE_SUB_CHANNEL_3:
-        return True
+        pass
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
