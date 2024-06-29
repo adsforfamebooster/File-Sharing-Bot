@@ -25,14 +25,19 @@ async def is_subscribed(filter, client, update):
         pass
     if not FORCE_SUB_CHANNEL_3:
         pass
+    
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
+    
+    subscribed_channels = [FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL_2, FORCE_SUB_CHANNEL_3]
+    
     try:
-        for fsub in [FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL_2, FORCE_SUB_CHANNEL_3]:
-            member = await client.get_chat_member(chat_id = fsub, user_id = user_id)
+        for fsub in subscribed_channels:
+            member = await client.get_chat_member(chat_id=fsub, user_id=user_id)
+        return True
     except UserNotParticipant:
-        return False
+        return False 
 
     if not member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
         return False
