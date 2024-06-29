@@ -130,13 +130,17 @@ async def not_joined(client: Client, message: Message):
         [
             InlineKeyboardButton(
                 "Join Channel",
-                url = client.invitelink),
-            InlineKeyboardButton(
-                "Join Channel 2",
-                url = client.invitelink_2)
+                url = client.invitelink)
         ]
     ]
     try:
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                "Join Channel 2",
+                url = client.invitelink_2)
+            ]
+        )
         buttons.append(
             [
                 InlineKeyboardButton(
@@ -146,6 +150,8 @@ async def not_joined(client: Client, message: Message):
             ]
         )
     except IndexError:
+        pass
+    except:
         pass
 
     await message.reply(
