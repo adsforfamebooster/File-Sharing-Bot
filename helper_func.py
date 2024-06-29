@@ -6,7 +6,7 @@ import asyncio
 import schedule, time
 from pyrogram import filters
 from pyrogram.enums import ChatMemberStatus
-from config import FORCE_SUB_CHANNEL, ADMINS
+from config import FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL_2, FORCE_SUB_CHANNEL_3, ADMINS
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
@@ -21,11 +21,16 @@ async def del_msg(client, chat_id, message_id):
 async def is_subscribed(filter, client, update):
     if not FORCE_SUB_CHANNEL:
         return True
+    if not FORCE_SUB_CHANNEL_2:
+        return True
+    if not FORCE_SUB_CHANNEL_3:
+        return True
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
     try:
-        member = await client.get_chat_member(chat_id = FORCE_SUB_CHANNEL, user_id = user_id)
+        for fsub in [FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL_2, FORCE_SUB_CHANNEL_3]:
+            member = await client.get_chat_member(chat_id = fsub, user_id = user_id)
     except UserNotParticipant:
         return False
 
