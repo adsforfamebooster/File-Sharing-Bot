@@ -33,6 +33,9 @@ async def is_subscribed(filter, client, update):
             member = await client.get_chat_member(chat_id=FORCE_SUB_CHANNEL, user_id=user_id)
     except UserNotParticipant:
         return False
+    except Exception as mkc:
+        print(str(mkc))
+        return False 
 
     if not member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
         return False
