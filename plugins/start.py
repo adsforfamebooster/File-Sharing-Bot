@@ -131,7 +131,7 @@ async def not_joined(client: Client, message: Message):
         [
             InlineKeyboardButton(
                 "ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ",
-                url = client.invitelink)
+                url = "https://t.me/+1Fm-8cnSsDRiYTYx")
         ]
     ]
     try:
@@ -139,7 +139,7 @@ async def not_joined(client: Client, message: Message):
             [
                 InlineKeyboardButton(
                 "ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ",
-                url = client.invitelink_2)
+                url = "https://t.me/+1Fm-8cnSsDRiYTYx")
             ]
         )
         buttons.append(
