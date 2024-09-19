@@ -32,8 +32,8 @@ DB_URI = os.environ.get("DATABASE_URL", "")
 DB_NAME = os.environ.get("DATABASE_NAME", "SUPERHERO")
 
 #force sub channel id, if you want enable force sub
-FORCE_SUB_CHANNEL = int(-1001711768113)
-FORCE_SUB_CHANNEL_2 = int(-1001711768113)
+FORCE_SUB_CHANNEL = int("FORCE_SUB_CHANNEL")
+FORCE_SUB_CHANNEL_2 = int("FORCE_SUB_CHANNEL_2")
 
 TIME_TO_DEL = int(os.environ.get("TIME_TO_DEL", 3600))
 
