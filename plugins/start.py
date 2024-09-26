@@ -11,7 +11,7 @@ from helper_func import subscribed, encode, decode, get_messages, del_msg
 from database.database import add_user, del_user, full_userbase, present_user
 
 import pyrogram.utils
-pyrogram.utils.MIN_CHANNEL_ID = -1002163026920
+pyrogram.utils.MIN_CHANNEL_ID = -1000000000000
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
